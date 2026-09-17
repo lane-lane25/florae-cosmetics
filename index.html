@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florae Cosmetics | Beleza Sustentável & Refil</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilo Principal Externo -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header / Navbar estilo E-commerce -->
+    <header class="header">
+        <div class="top-bar">
+            <span>🌿 Frete grátis para compras acima de R$ 150 em refis!</span>
+        </div>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-leaf"></i>
+                <span>Florae</span>
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="#lançamentos" class="nav-link">Lançamentos</a></li>
+                <li><a href="#produtos" class="nav-link">Produtos & Refis</a></li>
+                <li><a href="#sustentabilidade" class="nav-link">Sustentabilidade</a></li>
+                <li><a href="#sobre" class="nav-link">A Empresa</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <!-- Botão de destaque para apresentação dos avaliadores -->
+                <button class="btn-geo" id="openGeoModal">
+                    <i class="fa-solid fa-graduation-cap"></i> Painel Geografia
+                </button>
+
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sidebar do Carrinho de Compras -->
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Seu Carrinho</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart-msg">Seu carrinho está vazio.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotalValue">R$ 0,00</span>
+            </div>
+            <button class="btn btn-block">Finalizar Pedido</button>
+        </div>
+    </aside>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="tagline">Inovação em Cosméticos</span>
+            <h1>Sua beleza não precisa custar o planeta.</h1>
+            <p>Maquiagens de alta performance com embalagens reutilizáveis e sistema de refil ecológico.</p>
+            <div class="hero-buttons">
+                <a href="#produtos" class="btn">Comprar Coleção</a>
+                <a href="#sustentabilidade" class="btn btn-outline">Como funciona o Refil?</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Vantagens da Marca -->
+    <section class="benefits">
+        <div class="benefit-card">
+            <i class="fa-solid fa-rotate-left"></i>
+            <h4>Logística Reversa</h4>
+            <p>Retorne embalagens antigas e ganhe descontos em novos refis.</p>
+        </div>
+        <div class="benefit-card">
+            <i class="fa-solid fa-recycle"></i>
+            <h4>80% Menos Plástico</h4>
+            <p>Refis compactos que reduzem radicalmente o descarte.</p>
+        </div>
+        <div class="benefit-card">
+            <i class="fa-solid fa-hand-holding-heart"></i>
+            <h4>Cruelty-Free</h4>
+            <p>Produtos sustentáveis, veganos e não testados em animais.</p>
+        </div>
+    </section>
+
+    <!-- Vitrine de Produtos (Catálogo Estilo Boticário) -->
+    <section class="products-section" id="produtos">
+        <div class="section-title">
+            <h2>Nossos Destaques</h2>
+            <p>Compre a embalagem durável uma vez, compre o refil para sempre.</p>
+        </div>
+
+        <div class="products-grid">
+            
+            <!-- Produto 1 -->
+            <div class="product-card" data-id="1" data-name="Paleta de Sombras Florae" data-price="129.90">
+                <div class="badge">Mais Vendido</div>
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="product-info">
+                    <span class="category">Maquiagem • Olhos</span>
+                    <h3 class="product-title">Paleta Multifuncional Eco</h3>
+                    <p class="description">Embalagem magnética de alumínio reciclado ultrarresistente.</p>
+                    <div class="prices">
+                        <div class="price-item">
+                            <span class="label">Estojo + Conteúdo</span>
+                            <span class="price">R$ 129,90</span>
+                        </div>
+                        <div class="price-item refill">
+                            <span class="label">Apenas Refil</span>
+                            <span class="price">R$ 39,90</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-add-cart" onclick="addToCart('Paleta Multifuncional Eco', 129.90)">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <!-- Produto 2 -->
+            <div class="product-card" data-id="2" data-name="Base Fluida Reutilizável" data-price="98.90">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1522337094846-8a83859283f6?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="product-info">
+                    <span class="category">Maquiagem • Rosto</span>
+                    <h3 class="product-title">Base Fluida Nutritiva</h3>
+                    <p class="description">Frasco de vidro denso reforçado com dosador rosqueável.</p>
+                    <div class="prices">
+                        <div class="price-item">
+                            <span class="label">Frasco + Conteúdo</span>
+                            <span class="price">R$ 98,90</span>
+                        </div>
+                        <div class="price-item refill">
+                            <span class="label">Apenas Refil</span>
+                            <span class="price">R$ 32,90</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-add-cart" onclick="addToCart('Base Fluida Nutritiva', 98.90)">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <!-- Produto 3 -->
+            <div class="product-card" data-id="3" data-name="Pó Compacto Sustentável" data-price="79.90">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="product-info">
+                    <span class="category">Maquiagem • Rosto</span>
+                    <h3 class="product-title">Pó Compacto & Iluminador</h3>
+                    <p class="description">Estojo de bambu tratado com trava magnética e espelho interno.</p>
+                    <div class="prices">
+                        <div class="price-item">
+                            <span class="label">Estojo + Conteúdo</span>
+                            <span class="price">R$ 79,90</span>
+                        </div>
+                        <div class="price-item refill">
+                            <span class="label">Apenas Refil</span>
+                            <span class="price">R$ 24,90</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-add-cart" onclick="addToCart('Pó Compacto & Iluminador', 79.90)">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Seção Explicativa da Proposta da Empresa -->
+    <section class="about-section" id="sustentabilidade">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>Como Funciona a Economia Circular na Florae?</h2>
+                <p>Nossas embalagens foram criadas para durar anos, não semanas. Quando seu cosmético terminar, você não precisa descartar o frasco ou a caixa.</p>
+                <ul class="about-list">
+                    <li><i class="fa-solid fa-check"></i> <strong>1ª Compra:</strong> Adquira o conjunto completo (Embalagem Principal + Conteúdo).</li>
+                    <li><i class="fa-solid fa-check"></i> <strong>Reposições Seguintes:</strong> Compre apenas o refil em embalagem biodegradável, pagando muito menos.</li>
+                    <li><i class="fa-solid fa-check"></i> <strong>Descarte Zero:</strong> Envie embalagens danificadas de volta via Logística Reversa para reciclagem correta.</li>
+                </ul>
+            </div>
+            <div class="about-img" style="background-image: url('https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80');"></div>
+        </div>
+    </section>
+
+    <!-- MODAL DE GEOGRAFIA PARA A APRESENTAÇÃO -->
+    <div class="modal" id="geoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-earth-americas"></i> Análise Geográfica & Teórica</h2>
+                <button class="close-modal" id="closeGeoModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-intro">Este painel sintetiza os conceitos acadêmicos aplicados ao modelo de negócios da Florae Cosmetics para os avaliadores externos.</p>
+                
+                <div class="geo-cards-grid">
+                    
+                    <div class="geo-card">
+                        <h3><i class="fa-solid fa-industry"></i> Fases do Capitalismo</h3>
+                        <p><strong>Capitalismo Industrial (Predominante):</strong> Foco na transformação física de matérias-primas em mercadorias através do processo fabril.</p>
+                        <p><strong>Capitalismo Informacional:</strong> Uso de e-commerce, coleta de dados de consumo e estratégias em redes sociais para alavancar vendas.</p>
+                    </div>
+
+                    <div class="geo-card">
+                        <h3><i class="fa-solid fa-globe"></i> Divisão Internacional do Trabalho (DIT)</h3>
+                        <p>Cadeia global de suprimentos:</p>
+                        <ul>
+                            <li><strong>Brasil:</strong> Pesquisa & Desenvolvimento, bioingredientes da flora e envase final.</li>
+                            <li><strong>Países Parceiros:</strong> Importação de polímeros reciclados de alta precisão e componentes tecnológicos das embalagens.</li>
+                        </ul>
+                    </div>
+
+                    <div class="geo-card">
+                        <h3><i class="fa-solid fa-calculator"></i> Mais-Valia & Economia</h3>
+                        <p>Conceito marxista do valor produzido pelo trabalhador excedente ao seu salário, apropriado pelo capitalista.</p>
+                        <div class="calc-box">
+                            <strong>Exemplo na Paleta Florae:</strong><br>
+                            Custo de Produção: R$ 60,00 | Venda: R$ 129,90<br>
+                            <em>A margem bruta de R$ 69,90 financia impostos, frete, marketing, salários e o lucro.</em>
+                        </div>
+                    </div>
+
+                    <div class="geo-card">
+                        <h3><i class="fa-solid fa-leaf"></i> Impacto Ambiental & Consumismo</h3>
+                        <p><strong>Não existe empresa neutra:</strong> A produção consome água, energia e gera pegada de carbono no transporte.</p>
+                        <p><strong>Mitigação:</strong> Combate o descarte precoce das embalagens padrão através de refis e logística reversa, reduzindo o desperdício sem illusory 'impacto zero'.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Florae Cosmetics</h3>
+                <p>Unindo beleza, tecnologia e sustentabilidade através da economia circular.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#sustentabilidade">Refil & Sustentabilidade</a></li>
+                    <li><a href="#sobre">Nossa História</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Projeto Acadêmico</h4>
+                <p>Desenvolvido para a disciplina de Geografia sobre Linha de Produção Capitalista.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Florae Cosmetics — Todos os direitos reservados (Empresa Fictícia).</p>
+        </div>
+    </footer>
+
+    <!-- Scripts Externos -->
+    <script src="js/main.js"></script>
+    <script src="js/painel-geo.js"></script>
+</body>
+</html>
