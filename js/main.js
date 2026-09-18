@@ -1,4 +1,3 @@
-// Gerenciamento do Carrinho de Compras
 let cart = [];
 
 const cartIcon = document.getElementById('cartIcon');
@@ -9,7 +8,6 @@ const cartCount = document.getElementById('cartCount');
 const cartItemsContainer = document.getElementById('cartItems');
 const cartTotalValue = document.getElementById('cartTotalValue');
 
-// Abrir e fechar Sidebar do Carrinho
 cartIcon.addEventListener('click', () => {
     cartSidebar.classList.add('active');
     overlay.classList.add('active');
@@ -23,50 +21,52 @@ function closeCartSidebar() {
     overlay.classList.remove('active');
 }
 
-// Adicionar produto ao carrinho
-function addToCart(productName, price) {
-    cart.push({ name: productName, price: price });
+function addToCart(title, price) {
+    const existingItem = cart.find(item => item.title === title);
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({ title, price, quantity: 1 });
+    }
     updateCartUI();
     cartSidebar.classList.add('active');
     overlay.classList.add('active');
 }
 
-// Atualizar interface do carrinho
 function updateCartUI() {
-    // Atualiza o contador de itens
-    cartCount.textContent = cart.length;
+    const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalCount;
 
-    // Se estiver vazio
     if (cart.length === 0) {
         cartItemsContainer.innerHTML = '<p class="empty-cart-msg">Seu carrinho está vazio.</p>';
         cartTotalValue.textContent = 'R$ 0,00';
         return;
     }
 
-    // Renderiza os itens
-    cartItemsContainer.innerHTML = '';
+    let itemsHTML = '';
     let total = 0;
 
     cart.forEach((item, index) => {
-        total += item.price;
-        const itemElement = document.createElement('div');
-        itemElement.classList.add('cart-item');
-        itemElement.innerHTML = `
-            <div>
-                <div class="cart-item-title">${item.name}</div>
-                <div class="cart-item-price">R$ ${item.price.toFixed(2).replace('.', ',')}</div>
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        itemsHTML += `
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem;">
+                <div>
+                    <strong>${item.title}</strong><br>
+                    <small>R$ ${item.price.toFixed(2)} x ${item.quantity}</small>
+                </div>
+                <div>
+                    <span style="font-weight: 600;">R$ ${itemTotal.toFixed(2)}</span>
+                    <button onclick="removeFromCart(${index})" style="background: none; border: none; color: #8B4A53; cursor: pointer; margin-left: 0.5rem;"><i class="fa-solid fa-trash"></i></button>
+                </div>
             </div>
-            <button onclick="removeFromCart(${index})" style="background:none; border:none; color:red; cursor:pointer;">
-                <i class="fa-solid fa-trash"></i>
-            </button>
         `;
-        cartItemsContainer.appendChild(itemElement);
     });
 
-    cartTotalValue.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    cartItemsContainer.innerHTML = itemsHTML;
+    cartTotalValue.textContent = `R$ ${total.toFixed(2)}`;
 }
 
-// Remover item do carrinho
 function removeFromCart(index) {
     cart.splice(index, 1);
     updateCartUI();
